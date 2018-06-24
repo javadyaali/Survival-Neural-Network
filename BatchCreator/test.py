@@ -1,21 +1,30 @@
 import pickle
-import numpy as np
-import pandas as pd
-import datetime
-from random import shuffle
+# global m
+# m = 10
+
+# class A():
+# 	x = 0
+# 	y = 2
+# 	m = 0
+# 	def __init__(self, a,b,m):
+# 		self.x = a
+# 		self.y = b
+# 		self.m = m
+# 	def Print(self):
+# 		self.m += 1
+# 		print self.m
 
 
-# use output of PreProcessing.py to create batch
+# javad = A(10,1,m)
+# i = 0
+# while i < 10:
+# 	javad.Print()
+# 	i += 1
 
-SESSION_COUNT = 5000
 
-PreProcessingOutput = pickle.load(open("/home/hamid/Desktop/javad/research/mll/PreProcessing/PreProcessingOutput.pk",'rb'))
+l = [[1,1],[2,'2'],[3,3],[4,4],[5,5]]
 
-print(type(PreProcessingOutput))
 
-x = 0
-for i in PreProcessingOutput:
-	if i[0] == 1000 :
-		x += 1 
 
-			
+if '2' in l[1]:
+	print "hi"
