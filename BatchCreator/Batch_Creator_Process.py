@@ -4,6 +4,8 @@ import pandas as pd
 import datetime
 from collections import defaultdict
 from Coordinator import BatchBuilder
+from random import randint
+
 
 # use output of PreProcessing.py to create batch
 
@@ -27,7 +29,7 @@ for i in PreProcessingOutput:
 		userID -= 1
 
 # default tag that shows users status in batch creation process that contains 3 elements for each user, [last session number that used, tag, number of usage in batch creation]
-default_Tags = [[0,"not used"]] * 1000
+default_Tags = [[0,"Not used"]] * 1000
  
 
 # create a builder
@@ -36,13 +38,13 @@ batch_Builder = BatchBuilder(each_user_sessions, defaultTags, all_User_Session_C
 
 while 1:
 
-	minibatch_user_count = MINIBATCH_USER_COUNT
+	counter_Minibatch_User = MINIBATCH_USER_COUNT
 
-	while minibatch_user_count != 0:
-		batch_Builder.isValid()
-		batch_Builder.addUser()
-		batch_Builder.updateTags()
-		minibatch_user_count -= 1
+	while counter_Minibatch_User != 0:
+		batch_Builder.separate_Valid_User()
+		batch_Builder.add_User()
+		batch_Builder.update_Tags()
+		counter_Minibatch_User -= 1
 
 	# create output here
 	batch_Builder.generateOutput()
@@ -51,7 +53,7 @@ while 1:
 	if batch_Builder.isDone():
 		break
 	else:
-		batch_Builder.reset()
+		batch_Builder.reset(MINIBATCH_USER_COUNT)
 
 
 print("Create all minibatches successfully !!")

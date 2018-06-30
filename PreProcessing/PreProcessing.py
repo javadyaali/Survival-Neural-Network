@@ -33,7 +33,7 @@ def preProcessing():
 
     # Initializing variables
     iteration = 1
-    gapThreshold = 5
+    gapThreshold = 50
     beginSessionIndex = 19098861 # len(inputFile.index) = 19098862
     endSessionIndex = 19098861
     holeSize = 0
@@ -85,7 +85,7 @@ def preProcessing():
                
                 # Calculate gaps to find desirable gap
                 diff = list(map(sub, newTimestamp, oldTimestamp))
-                holeSize = diff[0]*365*24 + diff[1]*30*24 + diff[2]*24 + diff[3]
+                holeSize = diff[0]*365*24*60 + diff[1]*30*24*60 + diff[2]*24*60 + diff[3]*60 + diff[2]
                 if (holeSize <= (180*24)) and (holeSize >= gapThreshold):
                     gapSize = holeSize
                     
